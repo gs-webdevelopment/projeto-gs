@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Syncopate&family=Megrim&family=Rationale&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../src/css/style.css">
+    <title>QUIZ</title>
+</head>
+
+<div id="tela-inicio">
+        <h6>Quiz T.A.P.S</h6>
+        <p class="sub">Teste seus conhecimentos sobre o Tank Acoustic Predictive System.</p>
+
+        <input type="text" id="nome" placeholder="Digite seu nome">
+        <input type="text" id="email" placeholder="Digite seu email">
+
+        <p id="erro" class="erro oculto">Preencha o nome e o email para continuar</p>
+
+        <button class="btn1" onclick="comecarQuiz()">Iniciar quiz</button>
+    </div>
+
+    <div id="pergunta-container" class="oculto">
+        <p id="progresso"></p>
+        <h2 id="pergunta-texto"></h2>
+        <div id="btn-container" class="botoes"></div>
+    </div>
+
+    <div id="resultado-container" class="oculto">
+        <h2 id="resultado-texto">Sua pontuação foi 0/10!</h2>
+        <button onclick="reiniciar()">Jogar Novamente</button>
+    </div>
+
+    <script src="../src/js/script.js"></script>
+</body>
+</html>
