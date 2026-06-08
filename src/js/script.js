@@ -128,3 +128,62 @@ function comecarQuiz() {
  
     mostrarPergunta();
 }
+
+function mostrarPergunta() {
+    resetar();
+ 
+    let perguntaVista = perguntas[perguntaAtual];
+    perguntaTexto.innerText = perguntaVista.pergunta;
+
+    document.getElementById("progresso").innerText = 
+        `Pergunta ${perguntaAtual + 1} de ${perguntas.length}`;
+ 
+    perguntaVista.respostas.forEach(resposta => {
+        const botao = document.createElement("button");
+        botao.innerText = resposta.texto;
+        botao.classList.add("botoes");
+ 
+        botao.addEventListener("click", () => {
+            selecionarResposta(resposta.correto);
+        });
+ 
+        btnContainer.appendChild(botao);
+    });
+}
+ 
+function resetar() {
+    while (btnContainer.firstChild)
+        btnContainer.removeChild(btnContainer.firstChild);
+}
+ 
+function selecionarResposta(acertou) {
+    if (acertou) {
+        pontos++;
+    }
+ 
+    perguntaAtual++;
+ 
+    if (perguntaAtual < perguntas.length) {
+        mostrarPergunta();
+    } else {
+        mostrarResultado();
+    }
+}
+ 
+function mostrarResultado() {
+    document.getElementById("pergunta-container").classList.add("oculto");
+    resultadoContainer.classList.remove("oculto");
+    resultadoTexto.innerText = `Sua pontuação foi ${pontos}/${perguntas.length}`;
+}
+ 
+function reiniciar() {
+    document.getElementById("nome").value = "";
+    document.getElementById("email").value = "";
+ 
+    perguntaAtual = 0;
+    pontos = 0;
+ 
+    document.getElementById("pergunta-container").classList.add("oculto");
+    resultadoContainer.classList.add("oculto");
+    document.getElementById("tela-inicio").classList.remove("oculto");
+}
