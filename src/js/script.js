@@ -99,3 +99,32 @@ const perguntas = [
         ]
     },
 ]
+
+const perguntaTexto = document.getElementById("pergunta-texto");
+const btnContainer = document.getElementById("btn-container");
+const resultadoContainer = document.getElementById("resultado-container");
+const resultadoTexto = document.getElementById("resultado-texto");
+ 
+let perguntaAtual = 0;
+let pontos = 0;
+ 
+function comecarQuiz() {
+    const nome = document.getElementById("nome").value;
+    const email = document.getElementById("email").value;
+    const erro = document.getElementById("erro");
+ 
+    if (nome === "" || email === "") {
+        erro.classList.remove("oculto");
+        return;
+    }
+ 
+    erro.classList.add("oculto");
+    perguntaAtual = 0;
+    pontos = 0;
+ 
+    document.getElementById("tela-inicio").classList.add("oculto");
+    document.getElementById("pergunta-container").classList.remove("oculto");
+    resultadoContainer.classList.add("oculto");
+ 
+    mostrarPergunta();
+}
